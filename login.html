@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Organic Farm</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <section class="section" style="padding: 4rem 0; min-height: 70vh;">
+        <div class="container">
+            <div style="max-width: 450px; margin: 0 auto; background-color: var(--color-beige-primary); padding: 3rem; border-radius: 10px; box-shadow: var(--shadow-md);">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">🌿</div>
+                    <a href="index.html" class="logo" style="font-size: 2rem; display: inline-block; margin-bottom: 0.5rem; text-decoration: none;">Organic Farm</a>
+                    <h1 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0;">Login</h1>
+                </div>
+                
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="loginEmail" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password *</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; cursor: pointer; margin: 0;">
+                            <input type="checkbox" style="margin-right: 0.5rem; width: auto;">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" style="color: var(--color-green-primary); font-size: 0.9rem;">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-bottom: 1rem;">Login</button>
+                </form>
+                
+                <div style="text-align: center; margin: 1.5rem 0; position: relative;">
+                    <span style="background-color: var(--color-beige-primary); padding: 0 15px; position: relative; z-index: 1;">OR</span>
+                    <hr style="position: absolute; top: 50%; left: 0; right: 0; border: none; border-top: 1px solid var(--color-beige-dark); z-index: 0;">
+                </div>
+                
+                <button type="button" onclick="handleGoogleLogin()" class="btn" style="width: 100%; padding: 12px; margin-bottom: 1rem; background-color: white; border: 2px solid #dadce0; color: #3c4043; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 500;">
+                    <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="#000" fill-rule="evenodd">
+                            <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"/>
+                            <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.21 1.18-.84 2.18-1.79 2.91l2.75 2.13c1.63-1.5 2.72-3.7 2.72-6.54z" fill="#4285F4"/>
+                            <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"/>
+                            <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.75-2.13c-.76.53-1.78.9-3.21.9-2.38 0-4.4-1.57-5.12-3.74L.96 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"/>
+                        </g>
+                    </svg>
+                    Sign in with Google
+                </button>
+                
+                <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-beige-dark);">
+                    <p style="margin-bottom: 1rem;">Don't have an account?</p>
+                    <a href="register.html" class="btn btn-outline" style="width: 100%;">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Check if admin credentials
+            if (email === 'admin@organicfarm.com' && password === 'admin123') {
+                // Store admin user in localStorage
+                localStorage.setItem('currentUser', JSON.stringify({
+                    email: 'admin@organicfarm.com',
+                    name: 'Admin User',
+                    role: 'admin'
+                }));
+                alert('Login successful! Redirecting to admin dashboard...');
+                window.location.href = 'admin-dashboard.html';
+                return;
+            }
+            
+            // Simulate login (in real app, this would check against a database)
+            const storedUsers = JSON.parse(localStorage.getItem('farmUsers') || '[]');
+            const user = storedUsers.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Store logged in user
+                localStorage.setItem('currentUser', JSON.stringify({
+                    email: user.email,
+                    name: user.name,
+                    role: 'user'
+                }));
+                alert('Login successful! Welcome back, ' + user.name);
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        }
+        
+        function handleGoogleLogin() {
+            // In a real application, this would integrate with Google OAuth
+            alert('Google Sign-In is currently not configured. Please use email and password to login.\n\nTo enable Google Sign-In, you would need to:\n1. Set up Google OAuth credentials\n2. Configure the authentication flow\n3. Handle the OAuth callback');
+            
+            // Simulated Google login for demo purposes
+            // const googleUser = { name: 'Google User', email: 'user@gmail.com' };
+            // localStorage.setItem('currentUser', JSON.stringify({
+            //     email: googleUser.email,
+            //     name: googleUser.name,
+            //     role: 'user',
+            //     provider: 'google'
+            // }));
+            // window.location.href = 'index.html';
+        }
+        
+        // Check if user is already logged in
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                if (user.role === 'admin') {
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

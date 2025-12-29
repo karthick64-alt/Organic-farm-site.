@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Organic Produce - Order Now | Organic Farm</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .process-step {
+            text-align: center;
+            padding: var(--spacing-md);
+            background-color: var(--color-beige-primary);
+            border-radius: 10px;
+            position: relative;
+        }
+        .process-step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-green-primary), var(--color-green-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto var(--spacing-sm);
+        }
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .audience-card {
+            background-color: var(--color-white);
+            border: 2px solid var(--color-beige-dark);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .audience-card:hover {
+            border-color: var(--color-green-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        .audience-card .icon {
+            font-size: 3rem;
+            color: var(--color-green-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        .final-cta-section {
+            background: linear-gradient(135deg, var(--color-beige-primary) 0%, var(--color-white) 100%);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        .final-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-md);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌿 Organic Farm</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="home2.html" class="active">Home 2</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="practices.html">Practices</a>
+                <a href="shop.html">Shop</a>
+                <a href="calendar.html">Calendar</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <div class="account-dropdown" style="position: relative;">
+                    <a href="#" id="accountLink" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-user" style="font-size: 1.2rem;"></i>
+                        <span id="accountText">Account</span>
+                    </a>
+                    <div id="accountMenu" class="account-menu" style="display: none; position: absolute; top: calc(100% + 5px); right: 0; background: white; box-shadow: var(--shadow-md); border-radius: 5px; margin-top: 0; min-width: 180px; z-index: 1000;">
+                        <div id="accountMenuItems"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Action-Oriented Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Organic Farm to Table</h1>
+                    <p>100% organic, chemical-free fruits and vegetables. Grown with love, harvested with care, delivered fresh to your door.</p>
+                    <div class="hero-cta">
+                        <a href="shop.html" class="btn btn-primary">Shop Organic Produce</a>
+                        <a href="contact.html" class="btn btn-outline">Subscribe for Weekly Delivery</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80" alt="Organic Farm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Produce (Above the Fold) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Most Popular Organic Produce</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg); color: var(--color-text-light);">
+                Fresh, certified organic produce available now. Order today for farm-to-table freshness.
+            </p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80" alt="Organic Tomatoes" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Tomatoes</h3>
+                        <p class="product-price">$4.99/lb</p>
+                        <p class="product-description">Fresh, juicy tomatoes grown in nutrient-rich soil</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?w=400&q=80" alt="Organic Carrots" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Carrots</h3>
+                        <p class="product-price">$3.49/lb</p>
+                        <p class="product-description">Sweet, crisp carrots packed with vitamins and nutrients.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="2">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&q=80" alt="Organic Strawberries" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Strawberries</h3>
+                        <p class="product-price">$6.99/lb</p>
+                        <p class="product-description">Sweet, red strawberries picked at peak ripeness</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="4">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/35399890/pexels-photo-35399890.jpeg" alt="Organic Lettuce" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Lettuce</h3>
+                        <p class="product-price">$2.99/bunch</p>
+                        <p class="product-description">Crisp, fresh lettuce perfect for salads and wraps and salads.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="3">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/1870725/pexels-photo-1870725.jpeg" alt="Organic Apples" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Apples</h3>
+                        <p class="product-price">$4.49/lb</p>
+                        <p class="product-description">Crisp, sweet apples. Available in multiple varieties including Fuji and Gala</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="8">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/7674936/pexels-photo-7674936.jpeg" alt="Organic Blueberries" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Blueberries</h3>
+                        <p class="product-price">$8.99/lb</p>
+                        <p class="product-description">Antioxidant-rich blueberries perfect for breakfast or snacking</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="9">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="shop.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our Organic Farm -->
+    <section class="section" style="background-color: var(--color-beige-primary);">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Organic Farm</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-ban icon"></i>
+                    <h3>100% Chemical-Free</h3>
+                    <p>No synthetic pesticides, fertilizers, or harmful chemicals. Pure, natural farming methods for healthier produce.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-recycle icon"></i>
+                    <h3>Sustainable Practices</h3>
+                    <p>Eco-friendly methods protecting our environment for future generations. Responsible farming that cares for the earth.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-truck icon"></i>
+                    <h3>Farm-to-Table Freshness</h3>
+                    <p>Harvested at peak ripeness and delivered fresh. Maximum nutrition and flavor in every bite.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate icon"></i>
+                    <h3>USDA Certified Organic</h3>
+                    <p>Certified organic practices ensuring the highest quality produce. Trusted certification you can rely on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg); color: var(--color-text-light);">
+                From our farm to your table in simple steps
+            </p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <h4>Farm Cultivation</h4>
+                    <p>We grow our produce using organic methods in nutrient-rich soil, ensuring quality from seed to harvest.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <h4>Harvesting</h4>
+                    <p>Our produce is harvested at peak ripeness, capturing maximum flavor and nutritional value.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <h4>Quality Checks</h4>
+                    <p>Every batch undergoes strict quality checks to ensure freshness, taste, and organic certification standards.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">4</div>
+                    <h4>Delivery / Pickup</h4>
+                    <p>Fresh delivery to your door or convenient farm pickup. Choose the option that works best for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Transparency -->
+    <section class="section" style="background-color: var(--color-beige-primary);">
+        <div class="container">
+            <h2 class="section-title">Trust & Transparency</h2>
+            
+            <!-- Certifications -->
+            <div style="margin-bottom: var(--spacing-xl);">
+                <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--color-green-primary);">Our Certifications</h3>
+                <div class="certification-badges">
+                    <div class="badge">
+                        <i class="fas fa-certificate"></i> USDA Organic Certified
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-leaf"></i> Non-GMO Project Verified
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-globe"></i> Certified Sustainable
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-award"></i> Local Farm of the Year 2023
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Testimonials -->
+            <div>
+                <h3 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--color-green-primary);">What Our Customers Say</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The freshest vegetables I've ever tasted! You can really tell the difference with organic produce. The tomatoes are absolutely amazing."</p>
+                        <p class="testimonial-author">- Sarah Johnson, Regular Customer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"As a restaurant owner, I trust Organic Farm for all our produce. Their quality is consistent, and their commitment to sustainability aligns with our values."</p>
+                        <p class="testimonial-author">- Chef Michael Chen, Green Bistro</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I've been a weekly subscriber for over a year now and I'm never disappointed. The variety is great, everything is fresh, and the quality is consistently."</p>
+                        <p class="testimonial-author">- Michael Chen, Subscription Customer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Who We Serve</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg); color: var(--color-text-light);">
+                Fresh organic produce for everyone, from families to businesses
+            </p>
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <i class="fas fa-home icon"></i>
+                    <h3>Home Consumers</h3>
+                    <p>Fresh organic produce delivered to your door. Perfect for health-conscious families seeking the best quality fruits and vegetables.</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fas fa-utensils icon"></i>
+                    <h3>Restaurants</h3>
+                    <p>Consistent quality and reliable supply for restaurants. Bulk orders available with flexible delivery schedules to meet your kitchen needs.</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fas fa-store icon"></i>
+                    <h3>Retail Partners</h3>
+                    <p>Partner with us to bring certified organic produce to your customers. We work with retailers to provide fresh, quality products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Conversion CTA -->
+    <section class="final-cta-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">Eat Clean. Live Healthy. Choose Organic Today.</h2>
+            <p style="font-size: 1.2rem; color: var(--color-text-light); max-width: 700px; margin: 0 auto;">
+                Join thousands of satisfied customers enjoying fresh, certified organic produce straight from our farm.
+            </p>
+            <div class="final-cta-buttons">
+                <a href="shop.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;">Order Fresh Produce</a>
+                <a href="contact.html" class="btn btn-outline" style="font-size: 1.1rem; padding: 15px 40px;">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="logo" style="font-size: 1.8rem; color: var(--color-white); margin-bottom: 1rem; display: inline-block;">🌿 Organic Farm</a>
+                    <p>Growing organic produce with love and care since 1985. Committed to sustainable farming and providing the freshest, healthiest food for our community.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="products.html">Our Products</a>
+                    <a href="practices.html">Farming Practices</a>
+                    <a href="shop.html">Online Shop</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <a href="calendar.html">Seasonal Calendar</a>
+                    <a href="blog.html">Farm Blog</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="partners.html">Partner With Us</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Farm Road, Countryside, ST 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@organicfarm.com</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Organic Farm. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="overlay"></div>
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3 style="margin: 0; color: white;">Shopping Cart</h3>
+            <button class="close-cart" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total"></div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/account-menu.js"></script>
+</body>
+</html>
+

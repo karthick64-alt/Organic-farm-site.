@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop - Organic Farm</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌿 Organic Farm</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="home2.html">Home 2</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="practices.html">Practices</a>
+                <a href="shop.html" class="active">Shop</a>
+                <a href="calendar.html">Calendar</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <div class="account-dropdown" style="position: relative;">
+                    <a href="#" id="accountLink" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-user" style="font-size: 1.2rem;"></i>
+                        <span id="accountText">Account</span>
+                    </a>
+                    <div id="accountMenu" class="account-menu" style="display: none; position: absolute; top: calc(100% + 5px); right: 0; background: white; box-shadow: var(--shadow-md); border-radius: 5px; margin-top: 0; min-width: 180px; z-index: 1000;">
+                        <div id="accountMenuItems"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <section class="hero" style="min-height: 300px; padding: 3rem 0;">
+        <div class="container">
+            <h1 class="section-title">Online Shop</h1>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                Order fresh organic produce and have it delivered to your door
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2>All Products</h2>
+                    <p>Browse our complete selection of organic produce</p>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <select class="form-group" style="width: auto; padding: 10px; border-radius: 5px;" onchange="sortProducts(this.value)">
+                        <option value="default">Sort by</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="shop-products">
+                <!-- Products will be loaded here -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80" alt="Organic Tomatoes" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Tomatoes</h3>
+                        <p class="product-price">$4.99/lb</p>
+                        <p class="product-description">Fresh, juicy tomatoes grown in nutrient.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?w=400&q=80" alt="Organic Carrots" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Carrots</h3>
+                        <p class="product-price">$3.49/lb</p>
+                        <p class="product-description">Sweet, crisp carrots packed with vitamin.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="2">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&q=80" alt="Organic Lettuce" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Lettuce</h3>
+                        <p class="product-price">$2.99/bunch</p>
+                        <p class="product-description">Crisp, fresh lettuce perfect for salads</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="3">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&q=80" alt="Organic Strawberries" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Strawberries</h3>
+                        <p class="product-price">$6.99/lb</p>
+                        <p class="product-description">Sweet, red strawberries picked at peak</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="4">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80" alt="Organic Bell Peppers" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Bell Peppers</h3>
+                        <p class="product-price">$5.99/lb</p>
+                        <p class="product-description">Colorful peppers rich in vitamin C</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="7">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&q=80" alt="Organic Apples" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Organic Apples</h3>
+                        <p class="product-price">$4.49/lb</p>
+                        <p class="product-description">Crisp, sweet apples in multiple varieties</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="8">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- More products from products.html can be included here -->
+            </div>
+
+            <div style="margin-top: 4rem; padding: 3rem; background-color: var(--color-beige-primary); border-radius: 10px;">
+                <h2 class="section-title">Subscription Boxes</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Weekly Box</h3>
+                        <p class="product-price">$45/week</p>
+                        <p>A curated selection of seasonal produce delivered weekly. Includes 8-10 items perfect for a family of 4.</p>
+                        <ul style="text-align: left; margin: 1rem 0; list-style: disc; padding-left: 2rem;">
+                            <li>8-10 fresh items</li>
+                            <li>Seasonal selection</li>
+                            <li>Free delivery</li>
+                            <li>Cancel anytime</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="subscribe('weekly')">Subscribe Weekly</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Monthly Box</h3>
+                        <p class="product-price">$150/month</p>
+                        <p>Monthly delivery of our best seasonal produce. Includes recipes and storage tips 2025 and beyond.</p>
+                        <ul style="text-align: left; margin: 1rem 0; list-style: disc; padding-left: 2rem;">
+                            <li>12-15 fresh items</li>
+                            <li>Recipe cards included</li>
+                            <li>Free delivery</li>
+                            <li>10% discount vs weekly</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="subscribe('monthly')">Subscribe Monthly</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--color-beige-primary);">
+        <div class="container">
+            <h2 class="section-title">Delivery Information</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-truck icon"></i>
+                    <h3>Delivery Schedule</h3>
+                    <p>We deliver Tuesday through Saturday in most areas. Orders placed before 2 PM are delivered the next business day.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h3>Delivery Areas</h3>
+                    <p>We currently deliver within a 30-mile radius of the farm. Check our contact page for specific zip codes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dollar-sign icon"></i>
+                    <h3>Delivery Fees</h3>
+                    <p>Free delivery on orders over $50. Orders under $50 have a $7.99 delivery fee.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt icon"></i>
+                    <h3>Freshness Guarantee</h3>
+                    <p>Not satisfied with your produce? Contact us within 24 hours for a full refund or replacement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="logo" style="font-size: 1.8rem; color: var(--color-white); margin-bottom: 1rem; display: inline-block;">🌿 Organic Farm</a>
+                    <p>Growing organic produce with love and care since 1985. Committed to sustainable farming and providing the freshest, healthiest food for our community.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="products.html">Our Products</a>
+                    <a href="practices.html">Farming Practices</a>
+                    <a href="shop.html">Online Shop</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <a href="calendar.html">Seasonal Calendar</a>
+                    <a href="blog.html">Farm Blog</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="partners.html">Partner With Us</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Farm Road, Countryside, ST 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@organicfarm.com</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Organic Farm. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="overlay"></div>
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3 style="margin: 0; color: white;">Shopping Cart</h3>
+            <button class="close-cart" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total"></div>
+    </div>
+
+    <script>
+        function subscribe(type) {
+            alert(`Thank you for your interest in our ${type} subscription box! Please contact us at info@organicfarm.com to complete your subscription.`);
+        }
+
+        function sortProducts(value) {
+            // Simple sorting functionality
+            const container = document.getElementById('shop-products');
+            const products = Array.from(container.querySelectorAll('.product-card'));
+            
+            products.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('.product-price').textContent.replace('$', '').split('/')[0]);
+                const priceB = parseFloat(b.querySelector('.product-price').textContent.replace('$', '').split('/')[0]);
+                const nameA = a.querySelector('.product-name').textContent;
+                const nameB = b.querySelector('.product-name').textContent;
+                
+                if (value === 'price-low') return priceA - priceB;
+                if (value === 'price-high') return priceB - priceA;
+                if (value === 'name') return nameA.localeCompare(nameB);
+                return 0;
+            });
+            
+            products.forEach(product => container.appendChild(product));
+        }
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/account-menu.js"></script>
+</body>
+</html>
+

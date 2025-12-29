@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Organic Farm</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌿 Organic Farm</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="home2.html">Home 2</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="practices.html">Practices</a>
+                <a href="shop.html">Shop</a>
+                <a href="calendar.html">Calendar</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <div class="account-dropdown" style="position: relative;">
+                    <a href="#" id="accountLink" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-user" style="font-size: 1.2rem;"></i>
+                        <span id="accountText">Account</span>
+                    </a>
+                    <div id="accountMenu" class="account-menu" style="display: none; position: absolute; top: calc(100% + 5px); right: 0; background: white; box-shadow: var(--shadow-md); border-radius: 5px; margin-top: 0; min-width: 180px; z-index: 1000;">
+                        <div id="accountMenuItems"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container" style="max-width: 1000px;">
+            <h1 class="section-title">Checkout</h1>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
+                <div>
+                    <h2>Shipping Information</h2>
+                    <form onsubmit="handleCheckout(event)">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" id="checkoutName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" id="checkoutEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" name="phone" id="checkoutPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Address *</label>
+                            <input type="text" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label>City *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Zip Code *</label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+
+                        <h2 style="margin-top: 2rem;">Payment Information</h2>
+                        <div class="form-group">
+                            <label>Card Number *</label>
+                            <input type="text" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label>Expiry Date *</label>
+                                <input type="text" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label>CVV *</label>
+                                <input type="text" placeholder="123" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Cardholder Name *</label>
+                            <input type="text" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 15px;">Place Order</button>
+                    </form>
+                </div>
+
+                <div>
+                    <div style="background-color: var(--color-beige-primary); padding: 2rem; border-radius: 10px; position: sticky; top: 100px;">
+                        <h2>Order Summary</h2>
+                        <div id="checkout-items" style="margin: 1rem 0; padding: 1rem 0; border-top: 1px solid var(--color-beige-dark); border-bottom: 1px solid var(--color-beige-dark);">
+                            <!-- Cart items will be displayed here -->
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin: 1rem 0;">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin: 1rem 0;">
+                            <span>Delivery:</span>
+                            <span id="delivery">$0.00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--color-green-primary);">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="logo" style="font-size: 1.8rem; color: var(--color-white); margin-bottom: 1rem; display: inline-block;">🌿 Organic Farm</a>
+                    <p>Growing organic produce with love and care since 1985. Committed to sustainable farming and providing the freshest, healthiest food for our community.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="products.html">Our Products</a>
+                    <a href="practices.html">Farming Practices</a>
+                    <a href="shop.html">Online Shop</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <a href="calendar.html">Seasonal Calendar</a>
+                    <a href="blog.html">Farm Blog</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="partners.html">Partner With Us</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Farm Road, Countryside, ST 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@organicfarm.com</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Organic Farm. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function loadCheckoutItems() {
+            // Pre-fill user data if logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (currentUser.email) {
+                const users = JSON.parse(localStorage.getItem('farmUsers') || '[]');
+                const user = users.find(u => u.email === currentUser.email);
+                if (user && document.getElementById('checkoutName')) {
+                    document.getElementById('checkoutName').value = user.name || '';
+                    document.getElementById('checkoutEmail').value = user.email || '';
+                    if (document.getElementById('checkoutPhone')) {
+                        document.getElementById('checkoutPhone').value = user.phone || '';
+                    }
+                }
+            }
+            
+            const cartItems = JSON.parse(localStorage.getItem('farmCart') || '[]');
+            const container = document.getElementById('checkout-items');
+            const subtotalEl = document.getElementById('subtotal');
+            const deliveryEl = document.getElementById('delivery');
+            const totalEl = document.getElementById('total');
+
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p>Your cart is empty</p>';
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            container.innerHTML = cartItems.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 50 ? 0 : 7.99;
+            const total = subtotal + delivery;
+
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            deliveryEl.textContent = delivery === 0 ? 'Free' : `$${delivery.toFixed(2)}`;
+            totalEl.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function handleCheckout(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const nameInput = document.getElementById('checkoutName');
+            const emailInput = document.getElementById('checkoutEmail');
+            const phoneInput = document.getElementById('checkoutPhone');
+            
+            const cartItems = JSON.parse(localStorage.getItem('farmCart') || '[]');
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 50 ? 0 : 7.99;
+            const total = subtotal + delivery;
+            
+            // Get current user
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            
+            // Create order object
+            const order = {
+                id: 'ORD-' + Date.now(),
+                customerName: nameInput ? nameInput.value : 'Guest',
+                customerEmail: emailInput ? emailInput.value : (currentUser.email || 'guest@email.com'),
+                customerPhone: phoneInput ? phoneInput.value : '',
+                items: cartItems,
+                subtotal: subtotal,
+                delivery: delivery,
+                total: total,
+                status: 'pending',
+                date: new Date().toISOString()
+            };
+            
+            // Save order to localStorage
+            const orders = JSON.parse(localStorage.getItem('farmOrders') || '[]');
+            orders.push(order);
+            localStorage.setItem('farmOrders', JSON.stringify(orders));
+            
+            alert('Thank you for your order! Your order has been placed successfully. Order ID: ' + order.id);
+            localStorage.removeItem('farmCart');
+            window.location.href = 'index.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCheckoutItems);
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/account-menu.js"></script>
+</body>
+</html>
+
